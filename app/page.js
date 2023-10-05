@@ -55,12 +55,13 @@ export default function Home() {
 
   return (
     <main>
-      <div className="flex items-center justify-center gap-14 mt-14">
-        <TimerDisplay time={time} primary />
-        <TimerDisplay time={timerDurations[1]} tutorial />
-        <TimerDisplay time={timerDurations[2]} solving />
-      </div>
-
+      {isActive && (
+        <div className="flex items-center justify-center gap-14 mt-14">
+          <TimerDisplay time={time} primary />
+          <TimerDisplay time={timerDurations[1]} tutorial />
+          <TimerDisplay time={timerDurations[2]} solving />
+        </div>
+      )}
       <ControlButtons
         onStart={startTimer}
         onRestart={restartTimer}
