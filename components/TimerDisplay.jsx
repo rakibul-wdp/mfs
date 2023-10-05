@@ -1,4 +1,4 @@
-const TimerDisplay = ({ time }) => {
+const TimerDisplay = ({ time, primary, tutorial, solving }) => {
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
@@ -8,7 +8,21 @@ const TimerDisplay = ({ time }) => {
     )}`;
   };
 
-  return <p>{formatTime(time)}</p>;
+  return (
+    <p
+      className={`${
+        primary
+          ? "bg-green-700 text-white"
+          : tutorial
+          ? "bg-yellow-400 text-black"
+          : solving
+          ? "bg-red-500 text-white"
+          : ""
+      } text-4xl font-bold rounded-lg p-14`}
+    >
+      {formatTime(time)}
+    </p>
+  );
 };
 
 export default TimerDisplay;

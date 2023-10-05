@@ -54,16 +54,18 @@ export default function Home() {
   };
 
   return (
-    <div className="App">
-      <h1>Multiple Timers</h1>
-      <TimerDisplay time={time} />
+    <main>
+      <div className="flex items-center justify-center gap-14 mt-14">
+        <TimerDisplay time={time} primary />
+        <TimerDisplay time={timerDurations[1]} tutorial />
+        <TimerDisplay time={timerDurations[2]} solving />
+      </div>
+
       <ControlButtons
         onStart={startTimer}
         onRestart={restartTimer}
         isActive={isActive}
       />
-      <TimerDisplay time={timerDurations[1]} />
-      <TimerDisplay time={timerDurations[2]} />
-    </div>
+    </main>
   );
 }
