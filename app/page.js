@@ -1,32 +1,72 @@
 "use client";
 
-import Card from "@/components/Card";
-import { useState } from "react";
+import ControlButtons from "@/components/ControlButtons";
+import TimerDisplay from "@/components/TimerDisplay";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [startCountdown, setStartCountdown] = useState(false);
+  const timerDurations = [45 * 60, 10 * 60, 5 * 60]; // durations for each timer in seconds
+  const [activeTimerIndex, setActiveTimerIndex] = useState(0);
+  const [time, setTime] = useState(timerDurations[activeTimerIndex]);
+  const [isActive, setIsActive] = useState(false);
 
-  const handleStartClick = () => {
-    setStartCountdown(true);
+  useEffect(() => {
+    let interval;
+
+    if (isActive) {
+      interval = setInterval(() => {
+        setTime((prevTime) => {
+          if (prevTime > 0) {
+            return prevTime - 1;
+          } else {
+            clearInterval(interval);
+            setIsActive(false);
+
+            // Move to the next timer when the current one is finished
+            if (activeTimerIndex < timerDurations.length - 1) {
+              setActiveTimerIndex((prevIndex) => prevIndex + 1);
+              return timerDurations[activeTimerIndex + 1];
+            }
+
+            // Reset to the first timer if all timers are finished
+            setActiveTimerIndex(0);
+            return timerDurations[0];
+          }
+        });
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isActive, activeTimerIndex, timerDurations]);
+
+  const startTimer = () => {
+    setIsActive(true);
+  };
+
+  const restartTimer = () => {
+    setIsActive(false);
+    setTime(timerDurations[activeTimerIndex]);
+    startTimer();
   };
 
   return (
-    <div>
-      {startCountdown ? (
-        <Card
-          setStartCountdown={setStartCountdown}
-          startCountdown={startCountdown}
-        />
-      ) : (
-        <div className="flex items-center justify-center">
-          <button
-            className="bg-green-500 text-lg font-bold mt-14 px-5 py-2 rounded-lg"
-            onClick={handleStartClick}
-          >
-            Start Countdown &#8594;
-          </button>
+    <main>
+      {isActive && (
+        <div className="flex items-center justify-center gap-14 mt-14">
+          <TimerDisplay time={time} primary />
+          <TimerDisplay time={timerDurations[1]} tutorial />
+          <TimerDisplay time={timerDurations[2]} solving />
         </div>
       )}
-    </div>
+      <ControlButtons
+        onStart={startTimer}
+        onRestart={restartTimer}
+        isActive={isActive}
+      />
+    </main>
   );
 }
