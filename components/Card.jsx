@@ -70,10 +70,16 @@ const Card = ({ startCountdown, setStartCountdown }) => {
   };
 
   return (
-    <section>
-      <div>{formatTime(mainTimeLeft)}</div>
-      <div>{formatTime(tutorialTimeLeft)}</div>
-      <div>{formatTime(solvingTimeLeft)}</div>
+    <section className="flex items-center justify-center gap-14 mt-14">
+      <div className="bg-green-700 text-white text-4xl font-bold rounded-lg p-14">
+        {formatTime(mainTimeLeft)}
+      </div>
+      <div className="bg-yellow-400 text-black text-4xl font-bold rounded-lg p-14">
+        {formatTime(tutorialTimeLeft)}
+      </div>
+      <div className="bg-red-500 text-white text-4xl font-bold rounded-lg p-14">
+        {formatTime(solvingTimeLeft)}
+      </div>
     </section>
   );
 };

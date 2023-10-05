@@ -11,7 +11,7 @@ export default function Home() {
   };
 
   return (
-    <div className="App">
+    <div>
       <button onClick={handleStartClick}>Start Countdown</button>
       <Card
         setStartCountdown={setStartCountdown}
