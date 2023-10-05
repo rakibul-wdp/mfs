@@ -1,10 +1,19 @@
 const ControlButtons = ({ onStart, onRestart, isActive }) => {
   return (
-    <div>
-      <button onClick={onStart} disabled={isActive}>
-        Start
+    <div className="flex items-center justify-center">
+      <button
+        className="bg-green-500 text-lg font-bold mt-14 px-5 py-2 rounded-lg"
+        onClick={onStart}
+        disabled={isActive}
+      >
+        Start Solving&#8594;
       </button>
-      <button onClick={onRestart}>Restart</button>
+      <button
+        className="bg-green-500 text-lg font-bold mt-14 px-5 py-2 rounded-lg"
+        onClick={onRestart}
+      >
+        Start Another Solving&#8594;
+      </button>
     </div>
   );
 };
