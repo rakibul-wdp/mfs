@@ -1,0 +1,13 @@
+{
+  "name": "unit-stytch-integration",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "stytch": "^7.0.0"
+  }
+}
