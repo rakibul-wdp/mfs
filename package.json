@@ -1,0 +1,20 @@
+{
+  "name": "stytch-final",
+  "version": "1.0.0",
+  "description": "Stytch SDK integration example",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@stytch/vanilla-js": "^1.0.0",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "stytch": "^1.0.0"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
+}
