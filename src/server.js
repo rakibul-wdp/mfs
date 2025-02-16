@@ -25,8 +25,8 @@ app.get("/authenticate", async (req, res) => {
       expiresIn: "1h",
     });
 
-    // Redirect to home page with JWT token
-    res.redirect(`/home?jwt=${jwtToken}`);
+    // Redirect to home page with JWT token, theme, and language
+    res.redirect(`/home?jwt=${jwtToken}&theme=light&language=en`);
   } catch (error) {
     console.error(error);
     res.status(400).send("Authentication failed");
