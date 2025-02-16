@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@stytch/vanilla-js": "^5.17.0",
+    "stytch": "^12.5.0"
+  }
+}
