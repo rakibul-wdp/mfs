@@ -8,6 +8,11 @@ import TokenAuthenticator from "./components/TokenAuthenticator";
 // We initialize the Stytch client using our project's public token which can be found in the Stytch dashboard
 const stytch = new StytchUIClient(process.env.REACT_APP_STYTCH_PUBLIC_TOKEN);
 
+const unitScript = document.createElement("script");
+unitScript.src = "https://ui.s.unit.sh/release/latest/components-extended.js";
+unitScript.async = true;
+document.head.appendChild(unitScript);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

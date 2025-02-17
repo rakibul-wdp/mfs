@@ -1,12 +1,12 @@
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 
-export const generateUnitJWT = (stytchUserId) => {
-  const payload = {
-    sub: stytchUserId, // Stytch user ID
-    iat: Math.floor(Date.now() / 1000), // Issued at time
-    exp: Math.floor(Date.now() / 1000) + 3600, // Expiration time (1 hour)
-  };
+// export const generateUnitJWT = (stytchUserId) => {
+//   const payload = {
+//     sub: stytchUserId,
+//     iat: Math.floor(Date.now() / 1000),
+//     exp: Math.floor(Date.now() / 1000) + 3600,
+//   };
 
-  const secret = process.env.REACT_APP_JWT_SECRET; // Replace with your JWT secret
-  return jwt.sign(payload, secret);
-};
+//   const secret = process.env.REACT_APP_JWT_SECRET;
+//   return jwt.sign(payload, secret);
+// };
