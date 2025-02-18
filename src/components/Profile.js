@@ -32,7 +32,7 @@ const Profile = () => {
       </button>
 
       <h2>Unit White-Label App</h2>
-      {session && <UnitApp jwtToken={session.user_id} />}
+      {session && <UnitApp jwtToken={session} />}
     </div>
   );
 };
