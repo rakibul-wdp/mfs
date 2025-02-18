@@ -1,13 +1,29 @@
 import { useStytch, useStytchSession, useStytchUser } from "@stytch/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UnitApp from "./UnitApp";
 
 const Profile = () => {
   const stytch = useStytch();
   const { user } = useStytchUser();
   const { session } = useStytchSession();
+  const [jwtToken, setJwtToken] = useState(null);
 
-  console.log(stytch.session);
+  function getCookie(name) {
+    let cookies = document.cookie.split("; ");
+    for (let cookie of cookies) {
+      let [key, value] = cookie.split("=");
+      if (key === name) {
+        return decodeURIComponent(value);
+      }
+    }
+    return null; // Return null if the cookie is not found
+  }
+
+  useEffect(() => {
+    const token = getCookie("stytch_session_jwt");
+    setJwtToken(token);
+    console.log("JWT Token:", token);
+  }, []); // Runs only on mount
 
   return (
     <div className="card">
@@ -33,6 +49,11 @@ const Profile = () => {
 
       <h2>Unit White-Label App</h2>
       {session && <UnitApp jwtToken={session} />}
+
+      <h2>Stored JWT Token</h2>
+      <pre className="code-block">
+        <code>{jwtToken || "No token found"}</code>
+      </pre>
     </div>
   );
 };
