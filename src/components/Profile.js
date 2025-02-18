@@ -7,8 +7,7 @@ const Profile = () => {
   const { user } = useStytchUser();
   const { session } = useStytchSession();
 
-  // Retrieve the JWT token from localStorage
-  const jwtToken = localStorage.getItem("unitJwtToken");
+  console.log(stytch.session);
 
   return (
     <div className="card">
@@ -32,9 +31,8 @@ const Profile = () => {
         Log out
       </button>
 
-      {/* Embed the Unit White-Label App */}
       <h2>Unit White-Label App</h2>
-      {/* {jwtToken && <UnitApp jwtToken={jwtToken} />} */}
+      {session && <UnitApp jwtToken={session.user_id} />}
     </div>
   );
 };
