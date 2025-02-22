@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Shared/Navbar";
+import Footer from "./components/Shared/Footer";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
+import SendMoney from "./components/User/SendMoney";
+import CashOut from "./components/User/CashOut";
+import Balance from "./components/User/Balance";
+import CashIn from "./components/Agent/CashIn";
+import BalanceRequest from "./components/Agent/BalanceRequest";
+import Transactions from "./components/Agent/Transactions";
+import ManageUsers from "./components/Admin/ManageUsers";
+import ManageAgents from "./components/Admin/ManageAgents";
+import RechargeRequests from "./components/Admin/RechargeRequests";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/send-money" element={<SendMoney />} />
+        <Route path="/cash-out" element={<CashOut />} />
+        <Route path="/balance" element={<Balance />} />
+        <Route path="/cash-in" element={<CashIn />} />
+        <Route path="/balance-request" element={<BalanceRequest />} />
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/manage-users" element={<ManageUsers />} />
+        <Route path="/manage-agents" element={<ManageAgents />} />
+        <Route path="/recharge-requests" element={<RechargeRequests />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
+};
 
-export default App
+export default App;
