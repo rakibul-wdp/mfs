@@ -1,7 +1,3 @@
-Here’s a **beautiful and professional `README.md`** file for both the **frontend** and **backend** of the Mobile Financial Service (MFS) application. This README provides clear instructions, descriptions, and details for anyone who wants to set up, run, or contribute to the project.
-
----
-
 ## **Mobile Financial Service (MFS) Application**
 
 ### **Overview**
@@ -259,7 +255,3 @@ For any questions or feedback, please contact:
 
 - **Email**: rakibul.wdp@example.com
 - **GitHub**: [rakibul-wdp](https://github.com/rakibul-wdp)
-
----
-
-This README provides a comprehensive guide for setting up, running, and understanding the MFS application. Let me know if you need further assistance! 😊
